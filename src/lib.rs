@@ -1,3 +1,5 @@
+mod house;
+
 #[cfg(test)]
 mod tests {
     #[test]
