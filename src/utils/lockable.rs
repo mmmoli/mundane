@@ -41,19 +41,20 @@ pub enum LockableState {
 }
 
 impl Lockable for LockableState {
+    fn is_open(&self) -> bool {
+        matches!(self, LockableState::Open)
+    }
+
+    fn is_closed(&self) -> bool {
+        !self.is_open()
+    }
+
     fn can_open(&self) -> bool {
         matches!(self, LockableState::ClosedAndUnlocked)
     }
 
     fn can_close(&self) -> bool {
         self.is_open()
-    }
-
-    fn is_open(&self) -> bool {
-        matches!(self, LockableState::Open)
-    }
-    fn is_closed(&self) -> bool {
-        !self.is_open()
     }
 
     fn is_locked(&self) -> bool {
