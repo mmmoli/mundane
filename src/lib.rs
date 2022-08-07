@@ -1,5 +1,5 @@
-mod utils;
-mod house;
+pub mod house;
+pub mod utils;
 
 #[cfg(test)]
 mod tests {

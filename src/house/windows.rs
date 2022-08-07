@@ -1,13 +1,13 @@
 use crate::utils::lockable::LockableState;
 
 #[derive(PartialEq, Debug, Default)]
-pub struct Door {
+pub struct Window {
     pub state: LockableState,
 }
 
-impl Door {
-    pub fn new(state: LockableState) -> Door {
-        Door { state }
+impl Window {
+    pub fn new(state: LockableState) -> Window {
+        Window { state }
     }
 }
 
@@ -18,24 +18,24 @@ mod tests {
 
     #[test]
     fn can_be_created() {
-        let d1 = Door::new(LockableState::Open);
-        let d2 = Door::new(LockableState::ClosedAndUnlocked);
-        let d3 = Door::new(LockableState::Locked);
+        let w1 = Window::new(LockableState::Open);
+        let w2 = Window::new(LockableState::ClosedAndUnlocked);
+        let w3 = Window::new(LockableState::Locked);
         assert_eq!(
-            d1,
-            Door {
+            w1,
+            Window {
                 state: LockableState::Open
             }
         );
         assert_eq!(
-            d2,
-            Door {
+            w2,
+            Window {
                 state: LockableState::ClosedAndUnlocked
             }
         );
         assert_eq!(
-            d3,
-            Door {
+            w3,
+            Window {
                 state: LockableState::Locked
             }
         );
