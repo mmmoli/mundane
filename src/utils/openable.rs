@@ -2,6 +2,7 @@
 pub enum OpenableError {
     AlreadyClosed,
     AlreadyOpen,
+    CannotOpen,
 }
 
 impl std::error::Error for OpenableError {}
@@ -10,17 +11,18 @@ impl std::fmt::Display for OpenableError {
         match &self {
             OpenableError::AlreadyClosed => write!(f, "This is already closed"),
             OpenableError::AlreadyOpen => write!(f, "This is already open"),
+            OpenableError::CannotOpen => write!(f, "This cannot be opened."),
         }
     }
 }
 
 pub trait Openable {
-    fn can_close(&self) -> bool;
     fn can_open(&self) -> bool;
-    fn close(&mut self) -> Result<(), OpenableError>;
-    fn is_closed(&self) -> bool;
+    fn can_close(&self) -> bool;
     fn is_open(&self) -> bool;
+    fn is_closed(&self) -> bool;
     fn open(&mut self) -> Result<(), OpenableError>;
+    fn close(&mut self) -> Result<(), OpenableError>;
 }
 
 #[derive(PartialEq, Debug, Default)]
